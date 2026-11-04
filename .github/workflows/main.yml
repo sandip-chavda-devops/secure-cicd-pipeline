@@ -13,8 +13,11 @@ jobs:
 
       - name: Run Gitleaks Secret Scanning
         uses: gitleaks/gitleaks-action@v2
+        with:
+          args: dir --path .
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Trivy Vulnerability Scanner
         uses: aquasecurity/trivy-action@master
